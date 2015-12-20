@@ -306,6 +306,10 @@
 		return
 	if(!Adjacent(over_location))
 		return
+		
+	if (usr.stunned || usr.paralysis || usr.resting) // If you're too disabled to put someone into it, you're too disabled to pull someone out of it.
+		return
+		
 	if(!(occupant == usr) && (!Adjacent(usr) || !usr.Adjacent(over_location)))
 		return
 	for(var/atom/movable/A in over_location.contents)
